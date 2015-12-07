@@ -300,7 +300,14 @@
     } else {
         CGFloat fontSizeValue = [fontSize floatValue] ?: [UIFont systemFontSize];
         if (fontName) {
-            *font = [UIFont fontWithName:fontName size:fontSizeValue];
+            if ([fontName isEqualToString:@"Regular"])
+                *font = [UIFont systemFontOfSize:fontSizeValue weight:UIFontWeightRegular];
+            else if ([fontName isEqualToString:@"Medium"])
+                *font = [UIFont systemFontOfSize:fontSizeValue weight:UIFontWeightMedium];
+            else if ([fontName isEqualToString:@"Light"])
+                *font = [UIFont systemFontOfSize:fontSizeValue weight:UIFontWeightLight];
+            else
+                *font = [UIFont fontWithName:fontName size:fontSizeValue];
         } else {
             *font = [UIFont systemFontOfSize:fontSizeValue];
         }
