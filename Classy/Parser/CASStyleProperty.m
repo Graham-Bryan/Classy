@@ -300,14 +300,25 @@
     } else {
         CGFloat fontSizeValue = [fontSize floatValue] ?: [UIFont systemFontSize];
         if (fontName) {
-            if ([fontName isEqualToString:@"Regular"])
-                *font = [UIFont systemFontOfSize:fontSizeValue weight:UIFontWeightRegular];
-            else if ([fontName isEqualToString:@"Medium"])
-                *font = [UIFont systemFontOfSize:fontSizeValue weight:UIFontWeightMedium];
-            else if ([fontName isEqualToString:@"Light"])
-                *font = [UIFont systemFontOfSize:fontSizeValue weight:UIFontWeightLight];
-            else
-                *font = [UIFont fontWithName:fontName size:fontSizeValue];
+            if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_8_2) {
+                if ([fontName isEqualToString:@"Regular"])
+                    *font = [UIFont systemFontOfSize:fontSizeValue weight:UIFontWeightRegular];
+                else if ([fontName isEqualToString:@"Medium"])
+                    *font = [UIFont systemFontOfSize:fontSizeValue weight:UIFontWeightMedium];
+                else if ([fontName isEqualToString:@"Light"])
+                    *font = [UIFont systemFontOfSize:fontSizeValue weight:UIFontWeightLight];
+                else
+                    *font = [UIFont fontWithName:fontName size:fontSizeValue];
+            }else{
+                if ([fontName isEqualToString:@"Regular"])
+                    *font = [UIFont fontWithName:@"HelveticaNeue-Regular" size:fontSizeValue];
+                else if ([fontName isEqualToString:@"Medium"])
+                    *font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:fontSizeValue];
+                else if ([fontName isEqualToString:@"Light"])
+                    *font = [UIFont fontWithName:@"HelveticaNeue-Light" size:fontSizeValue];
+                else
+                    *font = [UIFont fontWithName:fontName size:fontSizeValue];
+            }
         } else {
             *font = [UIFont systemFontOfSize:fontSizeValue];
         }
