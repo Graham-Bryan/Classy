@@ -311,7 +311,7 @@
                     *font = [UIFont fontWithName:fontName size:fontSizeValue];
             }else{
                 if ([fontName isEqualToString:@"Regular"])
-                    *font = [UIFont fontWithName:@"HelveticaNeue-Regular" size:fontSizeValue];
+                    *font = [UIFont fontWithName:@"HelveticaNeue" size:fontSizeValue];
                 else if ([fontName isEqualToString:@"Medium"])
                     *font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:fontSizeValue];
                 else if ([fontName isEqualToString:@"Light"])
